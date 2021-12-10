@@ -1,0 +1,28 @@
+{
+  "botConfig": {
+    "avatarsTheme": {
+      "default": "https://cdn.glitch.com/3e9845c4-e236-46fa-831d-a4f8e76aa207%2FLuarzito-icone.jpg?v=1618495057872"
+    },
+    "clientId": "743841329334845530",
+    "guildId": "742068003583295619",
+    "devId": "701953428510736396",
+    "themeColor": "#008cff"
+  },
+  "serverConfig": {
+    "pingSeconds": 15000
+  },
+  "logsChannel": {
+    "slashLogId": "792377293272121364",
+    "guildsLogId": "792376129473478666"
+  },
+  "links": {
+    "website": "https://luarzito.glitch.me/",
+    "supportGuild": "https://discord.gg/XKHcPa4fde/",
+    "addBot": "https://discord.com/oauth2/authorize?client_id=743841329334845530&scope=bot&permissions=8/",
+    "topGG": "https://top.gg/bot/743841329334845530/vote/"
+  },
+  "imagesLink": {
+    "helpBanner": "https://cdn.glitch.com/3e9845c4-e236-46fa-831d-a4f8e76aa207%2FLuarzito-help.jpg?v=1618502639787",
+    "infoEmbed": "https://images-ext-2.discordapp.net/external/ztJHP1o-dKR3zB6rPWoz3AlCNJ_keLZU-q_NEFlcCsA/https/upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1024px-Infobox_info_icon.svg.png"
+  }
+}
