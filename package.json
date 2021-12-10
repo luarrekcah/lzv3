@@ -1,0 +1,32 @@
+{
+  "name": "Luarzito",
+  "version": "3.0.0",
+  "description": "Um simples bot para o Discord!",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "@discordjs/rest": "^0.1.1-canary.0",
+    "discord-api-types": "^0.24.0",
+    "@discordjs/builders": "^0.8.2",
+    "discord.js": "^13.3.1",
+    "axios": "^0.24.0",
+    "cors": "^2.8.5",
+    "canvas": "^2.8.0",
+    "node-reverse-image-search": "^1.0.2"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-express"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
