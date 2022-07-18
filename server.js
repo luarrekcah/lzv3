@@ -1,9 +1,6 @@
 const express = require("express"),
   app = express();
 
-
-require(__dirname + "/bot.js")(app);
-
  app.get("/", function(req, res) {
     res.sendStatus(200);
     const ping = new Date();
@@ -13,4 +10,7 @@ require(__dirname + "/bot.js")(app);
     );
   });
 
+require(__dirname + "/bot.js")(app);
+
 module.exports = app;
+
