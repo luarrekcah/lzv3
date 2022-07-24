@@ -48,6 +48,9 @@ module.exports = {
       "couple.png"
     );
 
+    console.log(canvas.toBuffer());
+    console.log(couple);
+
     const coupleEmbed = new EmbedBuilder()
       .setColor(config.botConfig.themeColor)
       .setImage("attachment://couple.png");
