@@ -18,17 +18,17 @@ module.exports = {
     let embed = new EmbedBuilder()
       .setColor(config.botConfig.themeColor)
       .setTitle(`Avatar de ${user.user.username}#${user.user.discriminator}`)
-      .setImage(user.user.displayAvatarURL({ format: "png" }))
+      .setImage(user.user.displayAvatarURL({ format: "png", size: 1024, dynamic: true }))
       .setFooter({
         text: `Pedido de: ${interaction.user.username}`,
-        iconURL: interaction.user.displayAvatarURL({ format: "png" })
+        iconURL: interaction.user.displayAvatarURL({ format: "png", size: 1024, dynamic: true })
       });
 
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setLabel("Baixar foto")
         .setStyle(ButtonStyle.Link)
-        .setURL(user.user.displayAvatarURL({ format: "png" }))
+        .setURL(user.user.displayAvatarURL({ format: "png", size: 1024, dynamic: true }))
     );
 
     return interaction.reply({ embeds: [embed], components: [row] });
