@@ -33,26 +33,39 @@ module.exports = {
 
     const user2 = interaction.options.getMember("fotodireita");
 
-    const foto1 = await Canvas.loadImage(
-      user1.user.displayAvatarURL({ format: "png" })
-    );
-    const foto2 = await Canvas.loadImage(
-      user2.user.displayAvatarURL({ format: "png" })
-    );
+    console.log(user1.user);
+
+    let foto1, foto2;
+
+    if (user1.displayAvatarURL({ format: "jpg" }).includes('webp')) {
+      foto1 = await Canvas.loadImage(
+        `https://cdn.discordapp.com/avatars/${user1.user.id}/${user1.user.avatar}.png`
+      );
+    } else {
+      foto1 = await Canvas.loadImage(
+        user1.displayAvatarURL({ format: "jpg" })
+      );
+    }
+
+    if (user2.displayAvatarURL({ format: "jpg" }).includes('webp')) {
+      foto2 = await Canvas.loadImage(
+        `https://cdn.discordapp.com/avatars/${user2.user.id}/${user2.user.avatar}.png`
+      );
+    } else {
+      foto2 = await Canvas.loadImage(
+        user2.displayAvatarURL({ format: "jpg" })
+      );
+    }
 
     ctx.drawImage(foto1, 3, 0, 128, 128); // -10, 0, 128, 128 //5 fica muito bom, mas notavel pra direita
     ctx.drawImage(foto2, 130, 0, 128, 128); //260, 0, 128, 128
-
-    console.log(canvas.toBuffer());
-
+    
     const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'couple.png' });
-
-    console.log(couple);
 
     const coupleEmbed = new EmbedBuilder()
       .setColor(config.botConfig.themeColor)
       .setImage("attachment://couple.png");
 
-    return interaction.reply({ embeds: [coupleEmbed], files: [couple] });
+    return interaction.reply({ embeds: [coupleEmbed], files: [attachment] });
   }
 };
