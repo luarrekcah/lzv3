@@ -13,11 +13,7 @@ module.exports = {
   async execute(interaction) {
     const { client } = interaction,
       clientID = client.users.cache.get(config.botConfig.clientId),
-      clientAvatar = clientID.avatarURL({
-        dynamic: true,
-        format: "png",
-        size: 1024
-      });
+      clientAvatar =  `https://cdn.discordapp.com/avatars/${clientID.id}/${clientID.avatar}.png`
 
     let totalSeconds = client.uptime / 1000,
       days = Math.floor(totalSeconds / 86400),
