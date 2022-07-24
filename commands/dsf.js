@@ -11,9 +11,10 @@ module.exports = {
         .setName("nivel")
         .setDescription("Nível dos desafios")
         .setRequired(true)
-        .addChoice("-18", "-18")
-        .addChoice("+18", "+18")
-    ),
+        .addChoices(
+          { name: '-18', value: '-18' },
+          { name: '+18', value: '+18' },
+        )),
   execute(interaction) {
     const option = interaction.options.getString("nivel");
 
