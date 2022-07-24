@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders"),
   Discord = require("discord.js"),
-  config = require("../config.json");
+  config = require("../config.json"),
+  { EmbedBuilder,  ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -14,7 +15,7 @@ module.exports = {
   execute(interaction) {
     const user = interaction.options.getMember("usuario") || interaction;
 
-    let embed = new Discord.MessageEmbed()
+    let embed = new EmbedBuilder()
       .setColor(config.botConfig.themeColor)
       .setTitle(`Avatar de ${user.user.username}#${user.user.discriminator}`)
       .setImage(user.user.displayAvatarURL({ format: "png" }))
@@ -23,10 +24,10 @@ module.exports = {
         interaction.user.displayAvatarURL({ format: "png" })
       );
 
-    const row = new Discord.MessageActionRow().addComponents(
-      new Discord.MessageButton()
+    const row = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
         .setLabel("Baixar foto")
-        .setStyle("LINK")
+        .setStyle(ButtonStyle.Link)
         .setURL(user.user.displayAvatarURL({ format: "png" }))
     );
 
