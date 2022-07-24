@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders"),
   Discord = require("discord.js"),
-  config = require("../config.json");
+  config = require("../config.json"),
+  { EmbedBuilder, MessageActionRow, ButtonInteraction } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -11,7 +12,7 @@ module.exports = {
 
     const dev = client.users.cache.get(config.botConfig.devId);
     const ano = new Date();
-    const embed = new Discord.MessageEmbed()
+    const embed = new EmbedBuilder()
 
       .setColor(config.botConfig.themeColor)
 
@@ -24,33 +25,34 @@ module.exports = {
         {
           name: "<a:love:758339794492981258> | Eu nasci no dia:",
           value: "09/08/2020 :partying_face:!"
-        } 
+        }
       )
-      .setFooter(
-        `${ano.getFullYear()} © ${client.user.username} | ${dev.username} `
+      .setFooter({
+        text: `${ano.getFullYear()} © ${client.user.username} | ${dev.username} `
+      }
       );
 
-    const row = new Discord.MessageActionRow()
+    const row = new MessageActionRow()
       .addComponents(
-        new Discord.MessageButton()
+        new ButtonInteraction()
           .setLabel("Adicionar")
           .setStyle("LINK")
           .setURL(config.links.addBot)
       )
       .addComponents(
-        new Discord.MessageButton()
+        new ButtonInteraction()
           .setLabel("Website")
           .setStyle("LINK")
           .setURL(config.links.website)
       )
       .addComponents(
-        new Discord.MessageButton()
+        new ButtonInteraction()
           .setLabel("Suporte")
           .setStyle("LINK")
           .setURL(config.links.supportGuild)
       )
       .addComponents(
-        new Discord.MessageButton()
+        new ButtonInteraction()
           .setLabel("Votar")
           .setStyle("LINK")
           .setURL(config.links.topGG)
