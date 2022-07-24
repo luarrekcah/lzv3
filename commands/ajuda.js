@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders"),
   Discord = require("discord.js"),
   config = require("../config.json"),
-  { EmbedBuilder, MessageActionRow, ButtonInteraction } = require('discord.js');
+  { EmbedBuilder,  ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -31,29 +31,29 @@ module.exports = {
       }
       );
 
-    const row = new MessageActionRow()
+    const row = new ActionRowBuilder()
       .addComponents(
-        new ButtonInteraction()
+        new ButtonBuilder()
           .setLabel("Adicionar")
-          .setStyle("LINK")
+          .setStyle(ButtonStyle.Link)
           .setURL(config.links.addBot)
       )
       .addComponents(
-        new ButtonInteraction()
+        new ButtonBuilder()
           .setLabel("Website")
-          .setStyle("LINK")
+          .setStyle(ButtonStyle.Link)
           .setURL(config.links.website)
       )
       .addComponents(
-        new ButtonInteraction()
+        new ButtonBuilder()
           .setLabel("Suporte")
-          .setStyle("LINK")
+          .setStyle(ButtonStyle.Link)
           .setURL(config.links.supportGuild)
       )
       .addComponents(
-        new ButtonInteraction()
+        new ButtonBuilder()
           .setLabel("Votar")
-          .setStyle("LINK")
+          .setStyle(ButtonStyle.Link)
           .setURL(config.links.topGG)
       );
     return interaction.reply({ embeds: [embed], components: [row] });
