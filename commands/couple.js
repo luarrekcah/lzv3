@@ -3,7 +3,8 @@ const { SlashCommandBuilder } = require("@discordjs/builders"),
   Canvas = require("canvas"),
   canvas = Canvas.createCanvas(260, 128), //384, 128
   ctx = canvas.getContext("2d"),
-  config = require("../config.json");
+  config = require("../config.json"),
+  { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -42,12 +43,12 @@ module.exports = {
     ctx.drawImage(foto1, 3, 0, 128, 128); // -10, 0, 128, 128 //5 fica muito bom, mas notavel pra direita
     ctx.drawImage(foto2, 130, 0, 128, 128); //260, 0, 128, 128
 
-    const couple = new Discord.MessageAttachment(
+    const couple = new AttachmentBuilder(
       canvas.toBuffer(),
       "couple.png"
     );
 
-    const coupleEmbed = new Discord.MessageEmbed()
+    const coupleEmbed = new EmbedBuilder()
       .setColor(config.botConfig.themeColor)
       .setImage("attachment://couple.png");
 
