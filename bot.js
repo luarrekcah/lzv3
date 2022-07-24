@@ -15,9 +15,10 @@ module.exports = app => {
     const command = require(`./commands/${file}`);
     client.commands.set(command.data.name, command);
   }
-  //
+  // SLASH LOADER
   require(__dirname + "/deploy-commands.js")(client);
   //
+  
   const eventFiles = fs
     .readdirSync("./events")
     .filter(file => file.endsWith(".js"));
@@ -32,4 +33,7 @@ module.exports = app => {
   }
 
   client.login(process.env.token);
+  
+  module.exports = client;
 };
+
