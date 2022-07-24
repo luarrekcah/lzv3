@@ -15,7 +15,7 @@ module.exports = {
     const embed = new EmbedBuilder()
 
       .setColor(config.botConfig.themeColor)
-      .setAuthor({ name: "Ajuda - Resumo", iconURL: 'config.imagesLink.infoEmbed' })
+      .setAuthor({ name: "Ajuda - Resumo", iconURL: config.imagesLink.infoEmbed })
       .setImage(config.imagesLink.helpBanner)
       .setDescription(
         `Um bot para moderação, RP valorizado, economia e diversão geral. Legal, né?! Se quiser ver tudo que posso fazer, entre no meu site! :)`
