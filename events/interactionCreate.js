@@ -1,66 +1,72 @@
-const Discord = require("discord.js");
-const config = require("../config.json");
+const config = require('../config.json'),
+	{ EmbedBuilder } = require('discord.js');
+
 module.exports = {
-  name: "interactionCreate",
-  async execute(interaction) {
-    const { client } = interaction;
+	name: 'interactionCreate',
+	async execute(interaction) {
+		const { client } = interaction;
+		console.log(
+			`${interaction.user.tag} em #${interaction.channel.name}: ${interaction.commandName}`,
+		);
 
-    console.log(
-      `${interaction.user.tag} em #${interaction.channel.name}: ${interaction.commandName}`
-    );
+		const opts = [];
+		for (let i = 0; i < interaction.options._hoistedOptions.length; i++) {
+			opts.push(interaction.options._hoistedOptions[i].value);
+		}
+		const logChannel = client.channels.cache.get(config.logsChannel.slashLogId),
+			fields = [
+				{
+					name: 'Autor:',
+					value: `<@${interaction.user.id}> - (\`${interaction.user.id}\`)`,
+					inline: false,
+				},
+				{
+					name: 'Comando:',
+					value: `${interaction.commandName} ${opts.join(' ')}`,
+					inline: false,
+				},
+				{
+					name: 'Id da mensagem/comando:',
+					value: `${interaction.id}`,
+					inline: false,
+				},
+				{
+					name: 'Canal:',
+					value: `${interaction.channel.name} - (${interaction.channel.id})`,
+					inline: false,
+				},
+				{
+					name: 'Servidor:',
+					value: `${interaction.guild.name} - (${interaction.guild.id})`,
+					inline: false,
+				},
+			],
+			embed = new EmbedBuilder()
+				.setColor(config.botConfig.themeColor)
+				.setThumbnail(
+					interaction.guild.iconURL({
+						dynamic: true,
+						size: 2048,
+					}),
+				)
+				.setTitle('Luarzito - Logs')
+				.setDescription('Log de Comandos')
+				.setFields(fields);
+        
+		logChannel.send({ embeds: [embed] });
 
-    if (!interaction.isCommand()) return;
+		if (!interaction.isChatInputCommand()) return;
 
-    const command = client.commands.get(interaction.commandName);
+		const command = client.commands.get(interaction.commandName);
 
-    if (!command) return;
+		if (!command) return;
 
-    try {
-      await command.execute(interaction);
-    } catch (error) {
-      console.error(error);
-      return interaction.reply({
-        content: "Houve um erro durante a execução desse comando.",
-        ephemeral: true
-      });
-    }
-
-    //=== logs
-    let opts = [];
-    for (let i = 0; i < interaction.options._hoistedOptions.length; i++) {
-      opts.push(interaction.options._hoistedOptions[i].value);
-    }
-
-    const logChannel = client.channels.cache.get(config.logsChannel.slashLogId),
-      embed = new Discord.MessageEmbed()
-        .setColor(config.botConfig.themeColor)
-        .setThumbnail(
-          interaction.guild.iconURL({
-            dynamic: true,
-            format: "png",
-            size: 1024
-          })
-        )
-        .addField(
-          "Autor:",
-          "<@" + interaction.user.id + "> - (`" + interaction.user.id + "`)"
-        )
-        .addField("Comando:", `${interaction.commandName} ${opts.join(" ")}`)
-        .addField("Id da mensagem/comando:", `${interaction.id}`)
-        .addField(
-          "Canal:",
-          interaction.channel.name + ` - (${interaction.channel.id})`
-        )
-        .addField(
-          "Servidor:",
-          interaction.guild.name + ` - (${interaction.guild.id})`
-        )
-        .setFooter(
-          `Horário de uso: ${new Date().getUTCHours() -
-            5}:${new Date().getUTCMinutes()}:${new Date().getUTCSeconds()}`
-        );
-    logChannel.send({ embeds: [embed] });
-
-    //=== logs
-  }
+		try {
+			await command.execute(interaction);
+		}
+		catch (error) {
+			console.error(error);
+			await interaction.reply({ content: 'Houve um erro ao executar esse comando!', ephemeral: true });
+		}
+	},
 };

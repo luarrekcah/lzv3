@@ -7,14 +7,15 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "@discordjs/rest": "^0.1.1-canary.0",
-    "discord-api-types": "^0.25.2",
-    "@discordjs/builders": "^0.9.0",
-    "discord.js": "^13.3.1",
-    "axios": "^0.24.0",
+    "@discordjs/builders": "^1.0.0",
+    "@discordjs/rest": "^1.0.0",
+    "axios": "^0.27.2",
+    "canvas": "^2.9.3",
     "cors": "^2.8.5",
-    "canvas": "^2.8.0",
+    "discord-api-types": "^0.36.3",
+    "discord.js": "^14.0.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
     "node-reverse-image-search": "^1.0.2"
   },
   "engines": {
