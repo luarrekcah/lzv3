@@ -43,12 +43,12 @@ module.exports = {
     ctx.drawImage(foto1, 3, 0, 128, 128); // -10, 0, 128, 128 //5 fica muito bom, mas notavel pra direita
     ctx.drawImage(foto2, 130, 0, 128, 128); //260, 0, 128, 128
 
+    console.log(canvas.toBuffer());
+
     const couple = new AttachmentBuilder(
-      canvas.toBuffer(),
-      "couple.png"
+      canvas.toBuffer('image/png')
     );
 
-    console.log(canvas.toBuffer());
     console.log(couple);
 
     const coupleEmbed = new EmbedBuilder()
