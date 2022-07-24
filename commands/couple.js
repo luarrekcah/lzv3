@@ -45,9 +45,7 @@ module.exports = {
 
     console.log(canvas.toBuffer());
 
-    const couple = new AttachmentBuilder(
-      canvas.toBuffer('image/png')
-    );
+    const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'couple.png' });
 
     console.log(couple);
 

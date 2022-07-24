@@ -1,7 +1,8 @@
 const { SlashCommandBuilder } = require("@discordjs/builders"),
   Discord = require("discord.js"),
   config = require("../config.json"),
-  reverseImageSearch = require("node-reverse-image-search");
+  reverseImageSearch = require("node-reverse-image-search"),
+  { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -45,27 +46,32 @@ module.exports = {
 
       let resultsFilter = [];
 
-      const row = new Discord.MessageActionRow();
+      const row = new ActionRowBuilder();
 
       for (let i = 0; i < results.length; i++) {
         if (i == 0) continue;
 
         resultsFilter.push(`${i} - ${results[i].title}`);
         row.addComponents(
-          new Discord.MessageButton()
+          new ButtonBuilder()
             .setLabel(i.toString())
-            .setStyle("LINK")
+            .setStyle(ButtonStyle.Link)
             .setURL(results[i].url)
         );
 
         if (i == 3) break;
       }
 
-      const embed = new Discord.MessageEmbed()
+      const embed = new EmbedBuilder()
         .setTitle("PIR - Pesquisa de Imagem Reversa")
         .setColor(config.botConfig.themeColor)
         .setThumbnail(resultsFilter[1].url)
-        .addField("Resultados para seu link:", resultsFilter.join(`\n`));
+        .addFields(
+          {
+            name: "Resultados para seu link:",
+            value: resultsFilter.join(`\n`)
+          }
+        );
 
       return interaction.followUp({ embeds: [embed], components: [row] });
     });

@@ -3,7 +3,8 @@ const { SlashCommandBuilder } = require("@discordjs/builders"),
   config = require("../config.json"),
   Discord = require("discord.js"),
   canvas = Canvas.createCanvas(900, 500),
-  ctx = canvas.getContext("2d");
+  ctx = canvas.getContext("2d"),
+  { AttachmentBuilder } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -189,10 +190,7 @@ module.exports = {
 
     await interaction.editReply("Painel quase pronto...");
 
-    const attachment = new Discord.MessageAttachment(
-      canvas.toBuffer(),
-      "luarzito.png"
-    );
+    const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'ping.png' });
 
     return interaction.followUp({ files: [attachment] });
   }
