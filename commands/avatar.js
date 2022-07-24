@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders"),
   Discord = require("discord.js"),
   config = require("../config.json"),
-  { EmbedBuilder,  ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+  { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -19,10 +19,10 @@ module.exports = {
       .setColor(config.botConfig.themeColor)
       .setTitle(`Avatar de ${user.user.username}#${user.user.discriminator}`)
       .setImage(user.user.displayAvatarURL({ format: "png" }))
-      .setFooter(
-        `Pedido de: ${interaction.user.username}`,
-        interaction.user.displayAvatarURL({ format: "png" })
-      );
+      .setFooter({
+        text: `Pedido de: ${interaction.user.username}`,
+        iconURL: interaction.user.displayAvatarURL({ format: "png" })
+      });
 
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
@@ -31,6 +31,6 @@ module.exports = {
         .setURL(user.user.displayAvatarURL({ format: "png" }))
     );
 
-    return interaction.reply({ embeds: [embed], components:[row] });
+    return interaction.reply({ embeds: [embed], components: [row] });
   }
 };
