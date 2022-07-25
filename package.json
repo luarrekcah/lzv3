@@ -17,6 +17,7 @@
     "discord.js": "^14.0.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "g-i-s": "^2.1.6",
     "node-reverse-image-search": "^1.0.2",
     "pm2": "^5.2.0"
   },
