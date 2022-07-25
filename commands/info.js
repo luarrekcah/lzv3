@@ -5,7 +5,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders"),
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("teste")
+    .setName("info")
     .setDescription("Desenvolvedor apenas")
     .addSubcommand(subcommand =>
       subcommand
