@@ -19,7 +19,7 @@ module.exports = app => {
 		commandCount++;
 	});
 
-	console.log(`${count} Comandos Carregados.`);
+	console.log(`${commandCount} Comandos Carregados.`);
 
 	const eventsPath = path.join(__dirname, 'events');
 	const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
@@ -35,7 +35,7 @@ module.exports = app => {
 		}
 		eventCount++;
 	}
-	console.log(`${count} Eventos Carregados.`);
+	console.log(`${eventCount} Eventos Carregados.`);
 
 	client.login(process.env.TOKEN);
 };

@@ -8,6 +8,14 @@ module.exports = {
     const { client } = guild;
     const channel = await client.channels.cache.get(config.logsChannel.guildsLogId);
     console.log(guild);
+
+    /*let channela;
+    guild.channels.cache.forEach(ch => {
+      console.log(ch);
+    });*/
+
+   // const invite = await channela.createInvite({ reason: `Para os desenvolvedores do ${client.user.tag}`, maxAge: 0 });
+
     const aviso = new EmbedBuilder()
       .setColor(config.botConfig.themeColor)
       .setAuthor(
@@ -24,7 +32,19 @@ module.exports = {
         {
           name: "Dono",
           value: `<@${guild.ownerId}>`
-        }
+        },
+        {
+          name: "Quantidade de Membros",
+          value: `${guild.memberCount}`
+        },
+        {
+          name: "Data de criação",
+          value: `${guild.createdAt}`
+        }/*,
+        {
+          name: "Convite",
+          value: `[invite](https://discord.gg/${invite.code})`
+        }*/
       );
 
     channel.send({ embeds: [aviso] });

@@ -19,7 +19,15 @@ module.exports = {
         {
           name:  "Dono",
           value: `<@${guild.ownerId}>`
-        }
+        },
+        {
+          name: "Quantidade de Membros",
+          value: `${guild.memberCount}`
+        },
+        {
+          name: "Data de criação",
+          value: `${guild.createdAt}`
+        },
         )
     channel.send({embeds: [aviso]});
   }
