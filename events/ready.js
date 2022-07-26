@@ -27,7 +27,9 @@ module.exports = {
 
     const atividades = [
       [`ATUALIZAÇÃO v3.0`,  ActivityType.Competing],
-      [`Comandos globais disponíveis, tente /ajuda`,  ActivityType.Watching]
+      [`Comandos globais disponíveis, tente /ajuda`,  ActivityType.Watching],
+      [`Entre no meu servidor!`,  ActivityType.Watching],
+      [`/ideia funcional`,  ActivityType.Watching]
     ];
 
     setInterval(async () => {
