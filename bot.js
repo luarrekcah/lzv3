@@ -8,17 +8,18 @@ module.exports = app => {
 
 	client.commands = new Collection();
 
-	let count = 0;
+	let commandCount = 0,
+	eventCount = 0;
 	fs.readdirSync('./commands').forEach((dir) => {
 		const commandFiles = fs.readdirSync(`./commands/${dir}`).filter((files) => files.endsWith(".js"));
 		for (const file of commandFiles) {
 			const command = require(`./commands/${dir}/${file}`);
 			client.commands.set(command.data.name, command);
 		}
-		count++;
+		commandCount++;
 	});
 
-	console.log(`${count} Comandos Carregados`)
+	console.log(`${count} Comandos Carregados.`);
 
 	const eventsPath = path.join(__dirname, 'events');
 	const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
@@ -32,7 +33,9 @@ module.exports = app => {
 		else {
 			client.on(event.name, (...args) => event.execute(...args));
 		}
+		eventCount++;
 	}
+	console.log(`${count} Eventos Carregados.`);
 
 	client.login(process.env.TOKEN);
 };
