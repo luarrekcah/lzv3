@@ -15,7 +15,7 @@ module.exports = app => {
 		const command = require(filePath);
 		client.commands.set(command.data.name, command);
 	}
-
+	
 	const eventsPath = path.join(__dirname, 'events');
 	const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
