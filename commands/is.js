@@ -61,8 +61,6 @@ module.exports = {
           );
       };
 
-      console.log("chegou aqui")
-
       const embed = await interaction.reply(
         {
           embeds: [await generateEmbed(0)],
@@ -71,13 +69,9 @@ module.exports = {
         }
       );
 
-      console.log("passou aqui")
-
       const collector = interaction.channel.createMessageComponentCollector({
         filter: i => i.user.id === interaction.user.id
       })
-
-      console.log("collector ok")
 
       collector.on('collect', async interaction => {
         interaction.customId === backId ? (currentIndex--) : (currentIndex++);
