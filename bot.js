@@ -11,7 +11,6 @@ module.exports = app => {
 	let count = 0;
 	fs.readdirSync('./commands').forEach((dir) => {
 		const commandFiles = fs.readdirSync(`./commands/${dir}`).filter((files) => files.endsWith(".js"));
-		console.log(commandFiles);
 		for (const file of commandFiles) {
 			const command = require(`./commands/${dir}/${file}`);
 			client.commands.set(command.data.name, command);
