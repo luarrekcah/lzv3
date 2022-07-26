@@ -39,9 +39,7 @@ module.exports = {
         {
           name: "Autor:",
           value: interaction.user.username
-        }
-      )
-      .addField(
+        },
         {
           name: "Conteúdo:",
           value: ideia
