@@ -17,8 +17,8 @@
   },
   "links": {
     "website": "https://luarzito.glitch.me/",
-    "supportGuild": "https://discord.gg/XKHcPa4fde/",
-    "addBot": "https://discord.com/oauth2/authorize?client_id=743841329334845530&scope=bot&permissions=8/",
+    "supportGuild": "https://discord.gg/nXZYEytt",
+    "addBot": "https://discord.com/api/oauth2/authorize?client_id=743841329334845530&permissions=139855260791&scope=applications.commands%20bot",
     "topGG": "https://top.gg/bot/743841329334845530/vote/"
   },
   "imagesLink": {
