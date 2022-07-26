@@ -1,6 +1,7 @@
- const { SlashCommandBuilder } = require("@discordjs/builders"),
+const { SlashCommandBuilder } = require("@discordjs/builders"),
   Discord = require("discord.js"),
-  config = require("../config.json");
+  config = require("../config.json"),
+  { EmbedBuilder } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -32,11 +33,25 @@ module.exports = {
         ? await client.channels.cache.get(interaction.channel.id)
         : await client.channels.cache.get(ops.id);
 
-    const ideiaEmbed = new Discord.MessageEmbed()
+    const ideiaEmbed = new EmbedBuilder()
       .setColor(config.botConfig.themeColor)
-      .addField("Autor:", interaction.user.username)
-      .addField("Conteúdo", ideia)
-      .setFooter("ID do Autor: " + interaction.user.id)
+      .addFields(
+        {
+          name: "Autor:",
+          value: interaction.user.username
+        }
+      )
+      .addField(
+        {
+          name: "Conteúdo:",
+          value: ideia
+        }
+      )
+      .setFooter(
+        {
+          text: `ID do Autor: ${interaction.user.id}`
+        }
+      )
       .setTimestamp();
 
     try {
