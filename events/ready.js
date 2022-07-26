@@ -29,7 +29,8 @@ module.exports = {
       [`ATUALIZAÇÃO v3.0`,  ActivityType.Competing],
       [`Comandos globais disponíveis, tente /ajuda`,  ActivityType.Watching],
       [`Entre no meu servidor!`,  ActivityType.Watching],
-      [`/ideia funcional`,  ActivityType.Watching]
+      [`/ideia funcional`,  ActivityType.Watching],
+      [`Estou caindo muito? Provavelmente estão trabalhando em mim!`,  ActivityType.Watching]
     ];
 
     setInterval(async () => {
